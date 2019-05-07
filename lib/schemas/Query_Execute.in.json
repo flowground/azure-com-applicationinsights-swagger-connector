@@ -1,0 +1,48 @@
+{
+    "type": "object",
+    "properties": {
+        "subscriptionId": {
+            "required": true,
+            "type": "string"
+        },
+        "resourceGroupName": {
+            "required": true,
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 90,
+            "pattern": "^[-\\w\\._\\(\\)]+$"
+        },
+        "applicationName": {
+            "required": true,
+            "type": "string"
+        },
+        "apiVersion": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "description": "The Analytics query. Learn more about the [Analytics query syntax](https://azure.microsoft.com/documentation/articles/app-insights-analytics-reference/)",
+            "properties": {
+                "applications": {
+                    "description": "A list of Application IDs for cross-application queries.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "query": {
+                    "description": "The query to execute.",
+                    "type": "string"
+                },
+                "timespan": {
+                    "description": "Optional. The timespan over which to query data. This is an ISO8601 time period value.  This timespan is applied in addition to any that are specified in the query expression.",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "query"
+            ],
+            "type": "object"
+        }
+    }
+}

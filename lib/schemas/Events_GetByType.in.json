@@ -1,0 +1,75 @@
+{
+    "type": "object",
+    "properties": {
+        "subscriptionId": {
+            "required": true,
+            "type": "string"
+        },
+        "resourceGroupName": {
+            "required": true,
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 90,
+            "pattern": "^[-\\w\\._\\(\\)]+$"
+        },
+        "applicationName": {
+            "required": true,
+            "type": "string"
+        },
+        "eventType": {
+            "required": true,
+            "type": "string",
+            "enum": [
+                "$all",
+                "traces",
+                "customEvents",
+                "pageViews",
+                "browserTimings",
+                "requests",
+                "dependencies",
+                "exceptions",
+                "availabilityResults",
+                "performanceCounters",
+                "customMetrics"
+            ]
+        },
+        "timespan": {
+            "required": false,
+            "type": "string"
+        },
+        "apiVersion": {
+            "required": true,
+            "type": "string"
+        },
+        "_filter": {
+            "required": false,
+            "type": "string"
+        },
+        "_search": {
+            "type": "string"
+        },
+        "_orderby": {
+            "type": "string"
+        },
+        "_select": {
+            "type": "string"
+        },
+        "_skip": {
+            "type": "integer",
+            "format": "int32"
+        },
+        "_top": {
+            "type": "integer",
+            "format": "int32"
+        },
+        "_format": {
+            "type": "string"
+        },
+        "_count": {
+            "type": "boolean"
+        },
+        "_apply": {
+            "type": "string"
+        }
+    }
+}

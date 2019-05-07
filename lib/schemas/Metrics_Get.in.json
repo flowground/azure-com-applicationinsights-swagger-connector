@@ -1,0 +1,128 @@
+{
+    "type": "object",
+    "properties": {
+        "subscriptionId": {
+            "required": true,
+            "type": "string"
+        },
+        "resourceGroupName": {
+            "required": true,
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 90,
+            "pattern": "^[-\\w\\._\\(\\)]+$"
+        },
+        "applicationName": {
+            "required": true,
+            "type": "string"
+        },
+        "metricId": {
+            "required": true,
+            "type": "string",
+            "enum": [
+                "requests/count",
+                "requests/duration",
+                "requests/failed",
+                "users/count",
+                "users/authenticated",
+                "pageViews/count",
+                "pageViews/duration",
+                "client/processingDuration",
+                "client/receiveDuration",
+                "client/networkDuration",
+                "client/sendDuration",
+                "client/totalDuration",
+                "dependencies/count",
+                "dependencies/failed",
+                "dependencies/duration",
+                "exceptions/count",
+                "exceptions/browser",
+                "exceptions/server",
+                "sessions/count",
+                "performanceCounters/requestExecutionTime",
+                "performanceCounters/requestsPerSecond",
+                "performanceCounters/requestsInQueue",
+                "performanceCounters/memoryAvailableBytes",
+                "performanceCounters/exceptionsPerSecond",
+                "performanceCounters/processCpuPercentage",
+                "performanceCounters/processIOBytesPerSecond",
+                "performanceCounters/processPrivateBytes",
+                "performanceCounters/processorCpuPercentage",
+                "availabilityResults/availabilityPercentage",
+                "availabilityResults/duration",
+                "billing/telemetryCount",
+                "customEvents/count"
+            ]
+        },
+        "timespan": {
+            "required": false,
+            "type": "string"
+        },
+        "interval": {
+            "type": "string",
+            "format": "duration"
+        },
+        "aggregation": {
+            "type": "array",
+            "items": {
+                "enum": [
+                    "min",
+                    "max",
+                    "avg",
+                    "sum",
+                    "count",
+                    "unique"
+                ],
+                "type": "string",
+                "x-ms-enum": {
+                    "modelAsString": true,
+                    "name": "MetricsAggregation"
+                }
+            },
+            "minItems": 1
+        },
+        "segment": {
+            "type": "array",
+            "items": {
+                "enum": [
+                    "applicationBuild",
+                    "applicationVersion",
+                    "authenticatedOrAnonymousTraffic",
+                    "browser",
+                    "browserVersion",
+                    "city",
+                    "cloudRoleName",
+                    "cloudServiceName",
+                    "continent",
+                    "countryOrRegion",
+                    "deploymentId",
+                    "deploymentUnit",
+                    "deviceType",
+                    "environment",
+                    "hostingLocation",
+                    "instanceName"
+                ],
+                "type": "string",
+                "x-ms-enum": {
+                    "modelAsString": true,
+                    "name": "MetricsSegment"
+                }
+            },
+            "minItems": 1
+        },
+        "top": {
+            "type": "integer",
+            "format": "int32"
+        },
+        "orderby": {
+            "type": "string"
+        },
+        "filter": {
+            "type": "string"
+        },
+        "apiVersion": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}
